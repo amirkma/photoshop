@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابزارهای فتوشاپ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .slide {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #1e40af);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white min-h-screen">
+    <div class="max-w-5xl mx-auto p-8">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-12">
+            <div>
+                <h1 class="text-4xl font-bold text-white flex items-center gap-3">
+                    <i class="fas fa-magic text-amber-400"></i>
+                    ابزارهای فتوشاپ
+                </h1>
+                <p class="text-indigo-300 mt-2">معرفی و کاربرد سه ابزار کاربردی</p>
+            </div>
+            <div class="flex items-center gap-4 text-sm">
+                <div onclick="prevSlide()" class="nav-button cursor-pointer px-5 py-2.5 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center gap-2">
+                    <i class="fas fa-arrow-right"></i>
+                    قبلی
+                </div>
+                <div class="flex items-center gap-2 text-indigo-400">
+                    <span id="current-slide" class="font-mono text-xl">1</span>
+                    <span class="text-2xl text-white/30">/</span>
+                    <span class="font-mono text-xl text-white/70">5</span>
+                </div>
+                <div onclick="nextSlide()" class="nav-button cursor-pointer px-5 py-2.5 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center gap-2">
+                    بعدی
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slides Container -->
+        <div id="slides" class="relative h-[620px] overflow-hidden rounded-3xl shadow-2xl border border-white/10">
+            
+            <!-- Slide 1: Title -->
+            <div id="slide-1" class="slide absolute inset-0 bg-gradient-to-br from-indigo-900/90 to-slate-900 flex flex-col items-center justify-center p-16 text-center">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-white/10 text-amber-300 px-6 py-2 rounded-full text-sm mb-8">
+                        <i class="fas fa-photo-video"></i>
+                        Adobe Photoshop
+                    </div>
+                    <div class="text-sm text-indigo-300/80 mt-4">
+                        ساخته شده توسط امیررضا مالکی<br>
+                        تقدیم به استاد گرامی: خانم نجفی
+                    </div>
+                    <h1 class="text-6xl font-bold leading-tight mb-6">ابزارهای جادویی فتوشاپ</h1>
+                    <p class="text-2xl text-indigo-200 mb-12">Clone Stamp • History Brush • Eraser</p>
+                    <div class="flex justify-center gap-8 text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-2xl bg-blue-500 flex items-center justify-center"><i class="fas fa-stamp"></i></div>
+                            <span>Clone Stamp</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-2xl bg-purple-500 flex items-center justify-center"><i class="fas fa-history"></i></div>
+                            <span>History Brush</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-2xl bg-red-500 flex items-center justify-center"><i class="fas fa-eraser"></i></div>
+                            <span>Eraser</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Clone Stamp -->
+            <div id="slide-2" class="slide absolute inset-0 bg-gradient-to-br from-slate-900 to-zinc-900 hidden flex-col p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-blue-600 rounded-3xl flex items-center justify-center text-4xl">🖌️</div>
+                    <div>
+                        <h2 class="text-5xl font-bold">Clone Stamp Tool</h2>
+                        <p class="text-blue-400 text-xl">ابزار کلون استمپ</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 flex-1">
+                    <div>
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-2xl font-semibold mb-6 text-blue-300">چگونه کار می‌کند؟</h3>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> نمونه‌برداری از یک قسمت عکس</li>
+                                <li class="flex gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> کپی کردن آن روی قسمت دیگر</li>
+                                <li class="flex gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Alt + کلیک برای انتخاب منبع</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-xl font-semibold mb-4">کاربردها</h3>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li>• حذف لک، جوش و اشیاء ناخواسته</li>
+                                <li>• تعمیر عکس‌های آسیب‌دیده</li>
+                                <li>• کپی الگوها و بافت‌ها</li>
+                                <li>• ریتاچ حرفه‌ای پوست و صورت</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-500/10 to-transparent border border-blue-500/30 rounded-3xl p-6 text-sm">
+                            <strong class="text-blue-400">نکته:</strong> از Brush با Opacity پایین برای نتیجه طبیعی استفاده کنید.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: History Brush -->
+            <div id="slide-3" class="slide absolute inset-0 bg-gradient-to-br from-slate-900 to-zinc-900 hidden flex-col p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-purple-600 rounded-3xl flex items-center justify-center text-4xl">⏳</div>
+                    <div>
+                        <h2 class="text-5xl font-bold">History Brush Tool</h2>
+                        <p class="text-purple-400 text-xl">ابزار براش تاریخچه</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 flex-1">
+                    <div>
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-2xl font-semibold mb-6 text-purple-300">چگونه کار می‌کند؟</h3>
+                            <p class="leading-relaxed text-lg">با این ابزار می‌توانید به حالت‌های قبلی عکس برگردید و فقط بخشی از تغییرات را Undo کنید.</p>
+                            <div class="mt-8 bg-white/10 p-5 rounded-2xl text-sm">
+                                <strong>History Panel</strong> را باز کنید و منبع تاریخچه را انتخاب کنید.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-xl font-semibold mb-4">کاربردها</h3>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li>• Undo انتخابی (فقط روی یک ناحیه)</li>
+                                <li>• مقایسه قبل و بعد به صورت خلاقانه</li>
+                                <li>• ترکیب حالات مختلف ویرایش</li>
+                                <li>• بازگشت جزئی به حالت اولیه عکس</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-400/10 border border-amber-400/30 rounded-3xl p-6">
+                            <p class="text-amber-300 text-sm">مثال: پوست را صاف کردید اما می‌خواهید چشم‌ها حالت طبیعی داشته باشند؟</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Eraser -->
+            <div id="slide-4" class="slide absolute inset-0 bg-gradient-to-br from-slate-900 to-zinc-900 hidden flex-col p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-red-600 rounded-3xl flex items-center justify-center text-4xl">🧼</div>
+                    <div>
+                        <h2 class="text-5xl font-bold">Eraser Tool</h2>
+                        <p class="text-red-400 text-xl">ابزار پاک‌کن</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 flex-1">
+                    <div>
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-2xl font-semibold mb-6 text-red-300">انواع پاک‌کن</h3>
+                            <div class="space-y-6">
+                                <div class="flex gap-4">
+                                    <div class="font-mono bg-white/10 w-8 h-8 rounded-xl flex items-center justify-center text-sm">E</div>
+                                    <div>
+                                        <div class="font-medium">Eraser Tool</div>
+                                        <div class="text-sm text-zinc-400">پاک کردن معمولی</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="font-mono bg-white/10 w-8 h-8 rounded-xl flex items-center justify-center text-sm">⇧E</div>
+                                    <div>
+                                        <div class="font-medium">Background Eraser</div>
+                                        <div class="text-sm text-zinc-400">پاک کردن پس‌زمینه هوشمند</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="font-mono bg-white/10 w-8 h-8 rounded-xl flex items-center justify-center text-sm">⇧E</div>
+                                    <div>
+                                        <div class="font-medium">Magic Eraser</div>
+                                        <div class="text-sm text-zinc-400">حذف خودکار رنگ مشابه</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="tool-card bg-white/5 border border-white/10 rounded-3xl p-8">
+                            <h3 class="text-xl font-semibold mb-4">کاربردها</h3>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li>• حذف بخش‌های ناخواسته عکس</li>
+                                <li>• جدا کردن سوژه از پس‌زمینه</li>
+                                <li>• تمیز کردن لبه‌ها</li>
+                                <li>• خلق افکت‌های خلاقانه</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Summary -->
+            <div id="slide-5" class="slide absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-900 hidden flex-col items-center justify-center p-16">
+                <div class="max-w-lg text-center">
+                    <h2 class="text-5xl font-bold mb-10">خلاصه ابزارها</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">🖌️</div>
+                            <div class="text-left">
+                                <div class="font-semibold text-xl">Clone Stamp</div>
+                                <div class="text-zinc-300">کپی و چسباندن بخش‌های عکس</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">⏳</div>
+                            <div class="text-left">
+                                <div class="font-semibold text-xl">History Brush</div>
+                                <div class="text-zinc-300">بازگشت هوشمند به گذشته</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-red-500/20 text-red-400 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">🧼</div>
+                            <div class="text-left">
+                                <div class="font-semibold text-xl">Eraser</div>
+                                <div class="text-zinc-300">پاک کردن دقیق و هوشمند</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 pt-8 border-t border-white/10">
+                        <p class="text-emerald-300 text-lg">تمرین کنید و خلاق باشید!</p>
+                        <button onclick="window.location.reload()" 
+                                class="mt-6 px-10 py-4 bg-white text-slate-900 rounded-2xl font-semibold hover:bg-amber-300 transition-colors">
+                            شروع تمرین در فتوشاپ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mt-8 h-1 bg-white/10 rounded-full overflow-hidden">
+            <div id="progress" class="progress-bar w-1/5 transition-all"></div>
+        </div>
+
+        <!-- Keyboard hint -->
+        <div class="text-center text-xs text-white/40 mt-6">
+            ← → برای جابجایی بین اسلایدها • Esc برای خروج تمام صفحه
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function showSlide(n) {
+            // Hide all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (slide) slide.classList.add('hidden');
+            }
+            
+            // Show current
+            const activeSlide = document.getElementById(`slide-${n}`);
+            if (activeSlide) activeSlide.classList.remove('hidden');
+            
+            // Update counter
+            document.getElementById('current-slide').textContent = n;
+            
+            // Update progress
+            const progressPercent = ((n - 1) / (totalSlides - 1)) * 100;
+            document.getElementById('progress').style.width = `${progressPercent}%`;
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide <= 1 ? totalSlides : currentSlide - 1;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "ArrowRight") {
+                nextSlide();
+            } else if (e.key === "ArrowLeft") {
+                prevSlide();
+            } else if (e.key === "Escape") {
+                // Optional fullscreen exit hint
+                console.log("خروج از حالت ارائه");
+            }
+        });
+
+        // Initialize
+        showSlide(1);
+
+        // Auto advance demo (optional)
+        // setInterval(() => { if (currentSlide < totalSlides) nextSlide(); }, 8000);
+    </script>
+</body>
+</html>
